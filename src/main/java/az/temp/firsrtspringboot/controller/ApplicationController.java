@@ -2,14 +2,13 @@ package az.temp.firsrtspringboot.controller;
 
 import az.temp.firsrtspringboot.model.Emp;
 import az.temp.firsrtspringboot.service.EmpService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("employees")
+@RequestMapping("api/employees/")
 public class ApplicationController {
     private EmpService service;
 
@@ -17,13 +16,23 @@ public class ApplicationController {
         this.service = empService;
     }
 
-    @GetMapping
+    @GetMapping()
     public List<Emp> getAllEmployees (){
         return service.getAllEmployees();
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "{id}")
     public Emp getEmployeeById (@PathVariable Long id){
         return service.getEmployesById(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public List<Emp> postNewEmployee(@PathVariable Long id){
+        return service.postNewEmployee(id, "Anar");
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public List<Emp> deleteEmployee(@PathVariable Long id) {
+        return service.deleteEmployee(id);
     }
 }
