@@ -1,8 +1,7 @@
 package az.temp.firsrtspringboot.controller;
 
-import az.temp.firsrtspringboot.model.Emp;
+import az.temp.firsrtspringboot.model.Employee;
 import az.temp.firsrtspringboot.service.EmpService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,23 +15,28 @@ public class ApplicationController {
         this.service = empService;
     }
 
-    @GetMapping()
-    public List<Emp> getAllEmployees (){
+    @GetMapping
+    public List<Employee> getAllEmployees (){
         return service.getAllEmployees();
     }
 
     @GetMapping(path = "{id}")
-    public Emp getEmployeeById (@PathVariable Long id){
+    public Employee getEmployeeById (@PathVariable Long id){
         return service.getEmployesById(id);
     }
 
-    @PutMapping(path = "{id}")
-    public List<Emp> postNewEmployee(@PathVariable Long id){
-        return service.postNewEmployee(id, "Anar");
+    @PostMapping
+    public Employee postNewEmployee(@RequestBody Employee employee){
+        return service.postNewEmployee(employee);
     }
 
     @DeleteMapping(path = "/{id}")
-    public List<Emp> deleteEmployee(@PathVariable Long id) {
+    public Employee deleteEmployee(@PathVariable Long id) {
         return service.deleteEmployee(id);
+    }
+
+    @PutMapping
+    public Employee updateEmployee(@RequestBody Employee employee){
+        return service.updateEmployee(employee);
     }
 }
