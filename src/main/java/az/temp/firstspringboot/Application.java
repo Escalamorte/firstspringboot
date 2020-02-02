@@ -1,4 +1,4 @@
-package az.temp.firsrtspringboot;
+package az.temp.firstspringboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

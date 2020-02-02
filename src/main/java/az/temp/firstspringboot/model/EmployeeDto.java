@@ -1,13 +1,14 @@
-package az.temp.firsrtspringboot.model;
+package az.temp.firstspringboot.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Employee {
+@NoArgsConstructor
+@AllArgsConstructor
+public class EmployeeDto {
     private Long id;
     private String name;
+    private Long salary;
 }
